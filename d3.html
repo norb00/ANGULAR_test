@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <title></title>
+</head>
+<body>
+    <p>PARAGRAPH</p>
+
+    <script>
+
+        var dataArray = [12, 30, 40,  100];
+
+        var width = 500;
+        var height = 500;
+
+        var canvas = d3.select('body')
+            .append('svg')
+            .attr("width", width)
+            .attr("height", height);
+
+        var diagonal = d3.svg.diagonal()
+                        .source({x: 10, y: 10})
+                        .target({x:200, y:300});
+
+        canvas.append("path")
+            .attr("fill", "none")
+            .attr("stroke", "black")
+            .attr("d", diagonal);
+
+
+    </script>
+    div.infos
+
+
+</body>
+</html>

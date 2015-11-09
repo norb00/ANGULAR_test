@@ -1,0 +1,20 @@
+<div ng-controller="InCtrl" class="container">
+<div class="table-responsive"> 
+ <table class="table table-bordered">
+  <button ng-click="handleState(activeMenu)">STATE</button>
+  <tr class="row">
+    <th>id <a href="" ng-class="orderDirection && orderField=='id' ? 'glyphicon glyphicon-arrow-down' : 'glyphicon glyphicon-arrow-up'" ng-click="changeOrder('id')"></a></th>
+    <th>date <a href="" ng-class="orderDirection && orderField=='date' ? 'glyphicon glyphicon-arrow-down' : 'glyphicon glyphicon-arrow-up'" ng-click="changeOrder('date')"></a></th>
+    <th>amount <a href="" ng-class="orderDirection && orderField=='amount' ? 'glyphicon glyphicon-arrow-down' : 'glyphicon glyphicon-arrow-up'" ng-click="changeOrder('amount')"></a></th>
+    <th></th>
+  </tr>
+  <tr ng-repeat="item in items | orderBy : orderField : orderDirection" class="row" class="info">
+
+        <td class="">{{item.id}}</td>
+        <td class="">{{item.date}}</td>
+        <td class="">{{item.amount}}</td>
+        <td class="warning" ><a href="" ng-click="confirmRemoveItem($index)" class="glyphicon glyphicon-trash"></a></td>
+  </tr>
+</table>
+</div>
+</div>
