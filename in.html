@@ -8,7 +8,7 @@
     <th>amount <a href="" ng-class="orderDirection && orderField=='amount' ? 'glyphicon glyphicon-arrow-down' : 'glyphicon glyphicon-arrow-up'" ng-click="changeOrder('amount')"></a></th>
     <th></th>
   </tr>
-  <tr ng-repeat="item in items | orderBy : orderField : orderDirection" class="row" class="info">
+  <tr ng-repeat="item in items | orderBy : orderField : orderDirection" class="row info">
 
         <td class="">{{item.id}}</td>
         <td class="">{{item.date}}</td>
