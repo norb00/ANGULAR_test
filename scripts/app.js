@@ -7,7 +7,7 @@ function isEmpty(obj) {
     return true;
 }
 
-var app = angular.module('dbApp', ['ngRoute', 'ngCookies','artemdemo.popup', 'ngSanitize']);
+var app = angular.module('dbApp', ['ngRoute', 'ngCookies','artemdemo.popup', 'ngSanitize', 'ngAnimate']);
 
 var user = {};
 

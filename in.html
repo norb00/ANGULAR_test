@@ -1,20 +1,18 @@
-<div ng-controller="InCtrl" class="container">
-<div class="table-responsive"> 
- <table class="table table-bordered">
-  <button ng-click="handleState(activeMenu)">STATE</button>
-  <tr class="row">
-    <th>id <a href="" ng-class="orderDirection && orderField=='id' ? 'glyphicon glyphicon-arrow-down' : 'glyphicon glyphicon-arrow-up'" ng-click="changeOrder('id')"></a></th>
-    <th>date <a href="" ng-class="orderDirection && orderField=='date' ? 'glyphicon glyphicon-arrow-down' : 'glyphicon glyphicon-arrow-up'" ng-click="changeOrder('date')"></a></th>
-    <th>amount <a href="" ng-class="orderDirection && orderField=='amount' ? 'glyphicon glyphicon-arrow-down' : 'glyphicon glyphicon-arrow-up'" ng-click="changeOrder('amount')"></a></th>
-    <th></th>
-  </tr>
-  <tr ng-repeat="item in items | orderBy : orderField : orderDirection" class="row info">
+<div ng-controller="InCtrl" class="container-fluid">
 
-        <td class="">{{item.id}}</td>
-        <td class="">{{item.date}}</td>
-        <td class="">{{item.amount}}</td>
-        <td class="warning" ><a href="" ng-click="confirmRemoveItem($index)" class="glyphicon glyphicon-trash"></a></td>
-  </tr>
-</table>
-</div>
+  <button ng-click="handleState(activeMenu)">STATE</button>
+  <div class="row">
+    <div class="col-md-2">id <a href="" ng-class="orderDirection && orderField=='id' ? 'glyphicon glyphicon-arrow-down' : 'glyphicon glyphicon-arrow-up'" ng-click="changeOrder('id')"></a></div>
+    <div class="col-md-3">date <a href="" ng-class="orderDirection && orderField=='date' ? 'glyphicon glyphicon-arrow-down' : 'glyphicon glyphicon-arrow-up'" ng-click="changeOrder('date')"></a></div>
+    <div class="col-md-3">amount <a href="" ng-class="orderDirection && orderField=='amount' ? 'glyphicon glyphicon-arrow-down' : 'glyphicon glyphicon-arrow-up'" ng-click="changeOrder('amount')"></a></div>
+    <div class="col-md-4"></div>
+  </div>
+  <div ng-repeat="item in items | orderBy : orderField : orderDirection" class="row info bg-info">
+
+        <div class="col-md-2 bg-warning">{{item.id}}</div>
+        <div class="col-md-3 bg-success">{{item.date}}</div>
+        <div class="col-md-3 bg-error">{{item.amount}}</div>
+        <div class="col-md-4 bg-danger" ><a href="" ng-click="confirmRemoveItem($index)" class="glyphicon glyphicon-trash"></a></div>
+  </div>
+
 </div>

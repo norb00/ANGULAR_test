@@ -92,7 +92,7 @@ app.controller('InCtrl', function($scope, $location, $http, MenuServiceFactory, 
     }
 
     if (!$scope.items){
-      $http.get("in_items.json").success(function(data) {
+      $http.get("in_items.json?t="+new Date().getTime()).success(function(data) {
         $scope.items = data;
       });
       $cookies.putObject("items", $scope.items);
