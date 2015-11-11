@@ -7,7 +7,7 @@ function isEmpty(obj) {
     return true;
 }
 
-var app = angular.module('dbApp', ['ngRoute', 'ngCookies','artemdemo.popup', 'ngSanitize', 'ngAnimate']);
+var app = angular.module('dbApp', ['ngRoute', 'ngCookies','artemdemo.popup', 'ngSanitize', 'ngAnimate', 'ui.bootstrap']);
 
 var user = {};
 
@@ -40,3 +40,29 @@ app.config(['$routeProvider', '$locationProvider', '$httpProvider' , function($r
         });
 }]);
 
+app.directive('itemRow', function(){
+
+  return {
+      restrict: 'E',
+      templateUrl: 'item-row.html'
+  };
+
+});
+
+app.directive('onePage', function(){
+
+  return {
+      restrict: 'E',
+      templateUrl: 'one-page.html'
+  };
+
+});
+
+app.directive('pager', function(){
+
+  return {
+      restrict: 'E',
+      templateUrl: 'pager.html'
+  };
+
+});

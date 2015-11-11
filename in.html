@@ -7,16 +7,8 @@
     <div class="col-md-3">amount <a href="" ng-class="orderDirection && orderField=='amount' ? 'glyphicon glyphicon-arrow-down' : 'glyphicon glyphicon-arrow-up'" ng-click="changeOrder('amount')"></a></div>
     <div class="col-md-4"></div>
   </div>
-  <div ng-repeat="item in items | orderBy : orderField : orderDirection" class="row info bg-info">
+    <one-page></one-page>
 
-        <div class="col-md-2 bg-warning">{{item.id}}</div>
-        <div class="col-md-3 bg-success">{{item.date}}</div>
-        <div class="col-md-3 bg-error">{{item.amount}}</div>
-        <div class="col-md-4 bg-danger" ><a href="" ng-click="confirmRemoveItem($index)" class="glyphicon glyphicon-trash"></a></div>
-  </div>
-
-    <div class="pagination">
-
-    </div>
+    <pager></pager>
 
 </div>

@@ -45,6 +45,9 @@ app.controller('InCtrl', function($scope, $location, $http, MenuServiceFactory, 
     $scope.items = $cookies.getObject("items");
 
     $scope.activeMenu = MenuServiceFactory.menuActive;
+    $scope.currentPage = 1
+    $scope.numPerPage = 10
+    $scope.maxSize = 5;
 
     $scope.orderDirection = false;
     $scope.orderField = 'id';
@@ -55,6 +58,10 @@ app.controller('InCtrl', function($scope, $location, $http, MenuServiceFactory, 
     $scope.handleState = function(s){
       MenuServiceFactory.menuChanged(s);
     };
+
+    $scope.pagesNum = function(){
+        return Math.ceil($scope.items.length / $scope.numPerPage);
+    }
 
     $scope.confirmRemoveItem = function(index){
         $popup.confirm({
@@ -96,6 +103,7 @@ app.controller('InCtrl', function($scope, $location, $http, MenuServiceFactory, 
         $scope.items = data;
       });
       $cookies.putObject("items", $scope.items);
+
     }
     
 //    MenuServiceFactory.setActive($route.current.activeMenu);
