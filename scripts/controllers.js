@@ -40,15 +40,46 @@ app.controller('LoginCtrl', function($scope, $location, $route, UserService, Men
   };   
 });
 
-app.controller('InCtrl', function($scope, $location, $http, MenuServiceFactory, UserService, $cookies, $popup, AuthService){
+app.controller('InCtrl', function($scope, $location, $http, MenuServiceFactory, UserService, $cookies, $popup, AuthService, AccountService, $q){
     $scope.title = "IN";
-    $scope.items = $cookies.getObject("items");
+//    $scope.items = $cookies.getObject("items");
+
+    $scope.numPerPage = 10;
+    $scope.currentPage = 1;
+
+    $scope.items = AccountService.getList();
+
+//    $scope.showedItems = $scope.items.slice($scope.currentPage-1, $scope.numPerPage);
+
+    console.log($scope.items);
+
+//    if (!$scope.items){
+
+/*
+    $q.when(r = AccountService.getList()).then(function(result){
+        console.log(r);
+        $scope.items = r;
+        $scope.showedItems = $scope.items.slice(0, $scope.numPerPage);
+    });
+*/
+
+
+//      $cookies.putObject("items", $scope.items);
+//    }
 
     $scope.activeMenu = MenuServiceFactory.menuActive;
-    $scope.currentPage = 1
-    $scope.numPerPage = 10
-    $scope.maxSize = 5;
 
+
+//    $scope.maxSize = 5;
+/*
+     $scope.$watch('currentPage', function() {
+        var begin = (($scope.currentPage - 1) * $scope.numPerPage)
+        , end = begin + $scope.numPerPage;
+
+        $scope.showedItems = $scope.items.slice(begin, end);
+        console.log($scope.showedItems);
+     });
+*/
     $scope.orderDirection = false;
     $scope.orderField = 'id';
 
@@ -60,7 +91,13 @@ app.controller('InCtrl', function($scope, $location, $http, MenuServiceFactory, 
     };
 
     $scope.pagesNum = function(){
+//        console.log(Math.ceil($scope.items.length / $scope.numPerPage));
         return Math.ceil($scope.items.length / $scope.numPerPage);
+    }
+
+    $scope.totalItems = function(){
+//        console.log($scope.items.length);
+        return $scope.items.length;
     }
 
     $scope.confirmRemoveItem = function(index){
@@ -98,13 +135,7 @@ app.controller('InCtrl', function($scope, $location, $http, MenuServiceFactory, 
         }
     }
 
-    if (!$scope.items){
-      $http.get("in_items.json?t="+new Date().getTime()).success(function(data) {
-        $scope.items = data;
-      });
-      $cookies.putObject("items", $scope.items);
 
-    }
     
 //    MenuServiceFactory.setActive($route.current.activeMenu);
     

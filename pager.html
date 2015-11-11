@@ -1,3 +1,8 @@
-<div data-pagination="" data-num-pages="pagesNum()"
-     data-current-page="currentPage" data-max-size="maxSize"
-     data-boundary-links="true"></div>
+<uib-pagination
+    num-pages="pagesNum()"
+    ng-model="currentPage"
+    max-size="maxSize"
+    total-items="totalItems()"
+    boundary-links="true"
+    class="pagination-sm" >
+</uib-pagination>

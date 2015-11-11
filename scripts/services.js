@@ -62,6 +62,16 @@ app.service('Session', function () {
   };
 });
 
+app.service('AccountService', function($http){
+    this.getList = function(){
+        $http
+        .get("in_items.json?t="+new Date().getTime())
+        .success(function(data) {
+            return data;
+      });
+    }
+});
+
 app.factory('AuthService', function ($http, Session) {
   var authService = {};
  

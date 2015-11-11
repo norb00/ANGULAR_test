@@ -58,7 +58,7 @@ app.directive('onePage', function(){
 
 });
 
-app.directive('pager', function(){
+app.directive('myPager', function(){
 
   return {
       restrict: 'E',
