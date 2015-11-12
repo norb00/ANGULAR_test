@@ -41,17 +41,27 @@ app.controller('LoginCtrl', function($scope, $location, $route, UserService, Men
 });
 
 app.controller('InCtrl', function($scope, $location, $http, MenuServiceFactory, UserService, $cookies, $popup, AuthService, AccountService, $q){
+    if (isEmpty(UserService.getUser()))
+      $location.path("/login");
+
     $scope.title = "IN";
 //    $scope.items = $cookies.getObject("items");
 
     $scope.numPerPage = 10;
     $scope.currentPage = 1;
+    $scope.items = [];
+     $scope.showedItems = [];
 
-    $scope.items = AccountService.getList();
+//    $scope.items = AccountService.getList();
+
+    $http
+        .get("in_items.json?t="+new Date().getTime())
+        .success(function(data) {
+            $scope.items = data;
+            $scope.showedItems = $scope.items.slice($scope.currentPage-1, $scope.numPerPage);
+      });
 
 //    $scope.showedItems = $scope.items.slice($scope.currentPage-1, $scope.numPerPage);
-
-    console.log($scope.items);
 
 //    if (!$scope.items){
 
@@ -71,20 +81,19 @@ app.controller('InCtrl', function($scope, $location, $http, MenuServiceFactory, 
 
 
 //    $scope.maxSize = 5;
-/*
+
      $scope.$watch('currentPage', function() {
         var begin = (($scope.currentPage - 1) * $scope.numPerPage)
         , end = begin + $scope.numPerPage;
 
         $scope.showedItems = $scope.items.slice(begin, end);
-        console.log($scope.showedItems);
+//        console.log(begin + ' - ' + end);
      });
-*/
+
     $scope.orderDirection = false;
     $scope.orderField = 'id';
 
-    if (isEmpty(UserService.getUser()))
-      $location.path("/login");
+
     
     $scope.handleState = function(s){
       MenuServiceFactory.menuChanged(s);
